@@ -48,10 +48,6 @@ app = dash.Dash(__name__)
 
 # ...
 
-### I am here adding unique components ###
-# regions = df["region"].sort_values().unique()
-# avocado_types = df["type"].sort_values().unique()
-
 # ...
 
 # Define layout
@@ -64,12 +60,26 @@ app.layout = html.Div(
                 html.P(children="🇦🇱", className="header-emoji"),
                 html.H1(children="Dibër TIC Analytics", className="header-title"),
                 html.P(
-                    children="""A simple data dashboard to visualize the behavior, demographics and trends of tourists visiting the Dibër Tourist Information Center (TIC) in Peshkopi, Albania.     
-                    Survey responses began from July 2023.""",
+                    children="""A simple dashboard to visualize the behavior, demographics and trends of tourists visiting the Dibër Tourist Information Center (TIC) in Peshkopi, Albania.""",
                     className="header-description",
                 ),
             ],
             className="header",
+        ),
+
+        html.Div(
+            children=[
+                html.H2("Additional Comments", style={"text-align": "center"}),
+                html.P(
+                    "The bar charts provide valuable insights into the demographics and behaviors of tourists visiting the TIC in Dibër, Albania. The map below shows the location of the Dibër TIC in Peshkopi for easy reference.",
+                    style={"text-align": "center", "margin": "10px 0"},
+                ),
+                html.P(
+                    "Note that data used in this dashboard is based on survey responses collected from July 2023 onward.",
+                    style={"text-align": "center"},
+                ),
+            ],
+            className="wrapper",
         ),
 
         html.Div(
@@ -135,7 +145,7 @@ app.layout = html.Div(
                     figure={
                         "data": [
                             {
-                                "x": df['Month'].dt.strftime('%Y-%m'),
+                                "x": df.groupby(df['Month'].dt.strftime('%Y-%m'))['Timestamp'].count(),
                                 "y": df.groupby('Month')['Timestamp'].count(),
                                 "type": "bar",
                                 "marker": {
@@ -168,7 +178,7 @@ app.layout = html.Div(
                             },
                         ],
                         "layout": {
-                            "title": "Tourists' Party Sizes"
+                            "title": "Tourists' Group Sizes"
                         },
                     },
                 ),
@@ -272,7 +282,7 @@ app.layout = html.Div(
 
         html.Div(
             children=[
-                html.H3("Contact Information", className="footer-title"),
+                html.H3("Personal Contact Information", className="footer-title"),
                 html.Div(
                     [
                         html.Img(src="/avatar.jpeg", className="avatar"),
