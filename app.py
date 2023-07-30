@@ -1,19 +1,30 @@
-# Import Libraries
+from flask import Flask, render_template, request
 import pandas as pd
 import gspread as gs
-import flask
 import dash
-from dash import dcc, html
+from dash import Dash, dcc, html
 import dash_leaflet as dl
 from dash.dependencies import Input, Output
 
-# Load Google Sheet
-gc = gs.service_account(filename='/Users/asessums/Desktop/diber-tic-survey/client_secret.json')
-sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1SkSw85Hn0QMuDT5za4nNJmGMi2rujZqHPmq-zw28huM/edit#gid=1131511128')
-ws = sh.worksheet('Responses')
+# Initialize Flask app
+server = Flask(__name__)
 
-# Create Dataframe
-df = pd.DataFrame(ws.get_all_records())
+# Initialize Dash app and bind it to the Flask server
+app = dash.Dash(__name__, server=server)
+
+# # Load Google Sheet
+# gc = gs.service_account(filename='/Users/asessums/Desktop/diber-tic-survey/client_secret.json')
+# sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1SkSw85Hn0QMuDT5za4nNJmGMi2rujZqHPmq-zw28huM/edit#gid=1131511128')
+# ws = sh.worksheet('Responses')
+
+# # Create Dataframe
+# df = pd.DataFrame(ws.get_all_records())
+
+# Specify the file name
+file_name = "/tic-survey-data.csv"
+
+# Read the CSV file into a pandas DataFrame
+df = pd.read_csv(file_name)
 
 # Rename Columns
 df.rename(columns={
