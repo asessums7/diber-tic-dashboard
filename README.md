@@ -1,2 +1,2 @@
 # diber-tic-dashboard
-![Diber Tourism Information Center in Peshkopi]([https://example.com/path/to/image.png](https://www.facebook.com/photo/?fbid=418991256998213&set=a.418991226998216)https://www.facebook.com/photo/?fbid=418991256998213&set=a.418991226998216)
+![diber-tic](https://github.com/asessums7/diber-tic-dashboard/assets/46286678/d8447a60-db9f-483c-bd06-a35c140c7e59)
