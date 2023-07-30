@@ -6,9 +6,8 @@ from dash import dcc, html
 import dash_leaflet as dl
 from dash.dependencies import Input, Output
 
-# Run the app
-if __name__ == "__main__":
-    app.run_server(debug=True)
+app = Dash(__name__)
+server = app.server
 
 # Load Google Sheet
 gc = gs.service_account(filename='/Users/asessums/Desktop/diber-tic-survey/client_secret.json')
@@ -308,6 +307,10 @@ app.layout = html.Div(
 )
 
 # ... 
+
+# Run the app
+if __name__ == "__main__":
+    app.run_server(debug=True)
 
 ### To Do List
 # Add Previous Data from CSV file
