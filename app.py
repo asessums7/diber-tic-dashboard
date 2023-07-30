@@ -21,7 +21,7 @@ app = dash.Dash(__name__, server=server)
 # df = pd.DataFrame(ws.get_all_records())
 
 # Specify the file name
-file_name = "/Users/asessums/Desktop/diber-tic-dashboard/tic-survey-data.csv"
+file_name = "https://github.com/asessums7/diber-tic-dashboard/blob/main/tic-survey-data.csv"
 
 # Read the CSV file into a pandas DataFrame
 df = pd.read_csv(file_name)
