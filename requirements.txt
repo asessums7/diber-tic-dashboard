@@ -1,4 +1,4 @@
 dash==2.11.1
 dash_leaflet==0.1.28
 gspread==5.10.0
-pandas==1.4.3
+pandas
