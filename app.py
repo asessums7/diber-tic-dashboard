@@ -1,7 +1,6 @@
 # Import Libraries
 import pandas as pd
 import gspread as gs
-import dash
 from dash import dcc, html
 import dash_leaflet as dl
 from dash.dependencies import Input, Output
