@@ -4,7 +4,7 @@ from dash import dcc, html
 import dash_leaflet as dl
 
 # Read the CSV file into a pandas DataFrame
-file_name = "/Users/asessums/Desktop/diber-tic-dashboard/tic-survey-data.csv"
+file_name = "https://github.com/asessums7/diber-tic-dashboard/blob/main/tic-survey-data.csv"
 df = pd.read_csv(file_name)
 
 # Rename Columns
