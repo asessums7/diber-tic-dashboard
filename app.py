@@ -1,12 +1,11 @@
 # Import Libraries
 import pandas as pd
 import gspread as gs
+import flask
+import dash
 from dash import dcc, html
 import dash_leaflet as dl
 from dash.dependencies import Input, Output
-
-app = Dash(__name__)
-server = app.server
 
 # Load Google Sheet
 gc = gs.service_account(filename='/Users/asessums/Desktop/diber-tic-survey/client_secret.json')
@@ -47,6 +46,7 @@ df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%m/%d/%Y %H:%M:%S')
 df['Month'] = df['Timestamp'].dt.to_period('M')
 
 app = dash.Dash(__name__)
+server = app.server
 
 # ...
 
