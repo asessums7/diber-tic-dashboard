@@ -6,11 +6,6 @@ from dash import dcc, html
 import dash_leaflet as dl
 from dash.dependencies import Input, Output
 
-# Load Google Sheet
-gc = gs.service_account(filename='/Users/asessums/Desktop/diber-tic-survey/client_secret.json')
-sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1SkSw85Hn0QMuDT5za4nNJmGMi2rujZqHPmq-zw28huM/edit#gid=1131511128')
-ws = sh.worksheet('Form Responses 1')
-
 # Create Dataframe
 df = pd.DataFrame(ws.get_all_records())
 
