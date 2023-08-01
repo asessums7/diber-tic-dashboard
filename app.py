@@ -1,11 +1,18 @@
+# Import Libraries
 import pandas as pd
+import gspread as gs
 import dash
 from dash import dcc, html
 import dash_leaflet as dl
+from dash.dependencies import Input, Output
 
-# Read the CSV file into a pandas DataFrame
-file_name = "/Users/asessums/Desktop/diber-tic-dashboard/tic-survey-data.csv"
-df = pd.read_csv(file_name)
+# Load Google Sheet
+gc = gs.service_account(filename='/Users/asessums/Desktop/diber-tic-survey/client_secret.json')
+sh = gc.open_by_url('https://docs.google.com/spreadsheets/d/1SkSw85Hn0QMuDT5za4nNJmGMi2rujZqHPmq-zw28huM/edit#gid=1131511128')
+ws = sh.worksheet('Form Responses 1')
+
+# Create Dataframe
+df = pd.DataFrame(ws.get_all_records())
 
 # Rename Columns
 df.rename(columns={
@@ -32,7 +39,7 @@ df.rename(columns={
 df = df.drop('Experience', axis='columns')
 
 # Convert Timestamp to datetime format with the correct format
-df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%m/%d/%y %H:%M')
+df['Timestamp'] = pd.to_datetime(df['Timestamp'], format='%m/%d/%Y %H:%M:%S')
 
 # Extract the month from the Timestamp and create a new column 'Month'
 df['Month'] = df['Timestamp'].dt.to_period('M')

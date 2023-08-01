@@ -2,4 +2,8 @@ dash==2.11.1
 dash_leaflet==0.1.28
 gspread==5.10.0
 pandas
+<<<<<<< HEAD
 gunicorn
+=======
+gunicorn
+>>>>>>> d26e2e9d83ddc6e744e11b8d110f2c28947a9c2f
